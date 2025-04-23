@@ -11,6 +11,7 @@ app = FastAPI()
 
 origins = [
     "https://api-central-one.vercel.app",
+    "http://localhost:3000"  # for local testing
 ]
 
 app.add_middleware(
