@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Auth Demo</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <input id="username" placeholder="Username" />
+    <input id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="getProtected()">Get Protected Data</button>
+
+    <p id="response"></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      async function login() {
+        console.log("login clicked");
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        try {
+          const res = await axios.post("http://127.0.0.1:8000/login", {
+            username,
+            password,
+          });
+          const token = res.data.access_token;
+          localStorage.setItem("jwt", token);
+          document.getElementById("response").textContent = "Logged in!";
+        } catch (err) {
+          localStorage.removeItem("jwt");
+          document.getElementById("response").textContent = "Login failed.";
+          console.error(err);
+        }
+      }
+
+      async function getProtected() {
+        console.log("getProtected clicked");
+        const token = localStorage.getItem("jwt");
+
+        try {
+          const res = await axios.get("http://127.0.0.1:8000/protected", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          document.getElementById("response").textContent = res.data.msg;
+        } catch (error) {
+          document.getElementById("response").textContent = "Access denied.";
+          console.error(err);
+        }
+      }
+    </script>
+  </body>
+</html>
