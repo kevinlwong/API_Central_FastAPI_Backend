@@ -9,11 +9,16 @@ from typing import List
 
 app = FastAPI()
 
+origins = [
+    "https://api-central-one.vercel.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 
 fake_users_db = {

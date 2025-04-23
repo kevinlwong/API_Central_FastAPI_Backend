@@ -1,0 +1,69 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# Vercel/Netlify build info
+.vercel
+.netlify
+
+# Build output
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Tests
+jest-output/
+coverage/
+
+# Temporary files
+*.swp
+*.tmp
+
+# Mac/Linux
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+ehthumbs.db
+Desktop.ini
+
+# React Native (if ever)
+.expo/
+
+jwt-demo/
+
+venv/
